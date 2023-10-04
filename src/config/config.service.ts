@@ -13,18 +13,28 @@ export class ConfigService implements TypeOrmOptionsFactory {
       username: process.env.DB_USER_NAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [UserEntity],
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     };
   }
 
-  configRedis(): any{
+  configRedis(): any {
     return {
       host: process.env.REDIS_HOST,
       port: process.env.REDIS_PORT,
       store: redisStore,
       db: process.env.REDIS_DB,
       isGlobal: true
+    }
+  }
+
+  configMinio() {
+    return {
+      endPoint: process.env.MINIO_ENDPOINT,
+      port: +process.env.MINIO_PORT,
+      useSSL: false,
+      accessKey: process.env.MINIO_ACCESS_KEY,
+      secretKey: process.env.MINIO_SECRET_KEY,
     }
   }
 }

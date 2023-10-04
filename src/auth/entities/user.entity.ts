@@ -15,6 +15,11 @@ export class UserEntity {
     @Column({
         type: 'varchar'
     })
+    avatar: string
+
+    @Column({
+        type: 'varchar'
+    })
     password: string
 
     @Column({

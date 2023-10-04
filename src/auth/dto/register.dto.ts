@@ -14,5 +14,10 @@ export class RegisterDto {
     @ApiProperty({
         type: String
     })
+    avatar: string
+
+    @ApiProperty({
+        type: String
+    })
     password: string
 }
