@@ -2,7 +2,7 @@ import { HttpStatus, ValidationError, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { ExceptionResponse } from './exceptions/common.exception';
+import { ExceptionResponse } from './util/exception';
 import { UtilCommonTemplate } from './util/util.common';
 
 async function bootstrap() {

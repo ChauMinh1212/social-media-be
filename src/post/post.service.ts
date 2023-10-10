@@ -1,9 +1,9 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CatchException, ExceptionResponse } from '../exceptions/common.exception';
+import { CatchException, ExceptionResponse } from '../util/exception';
 import { UserEntity } from '../user/entities/user.entity';
-import { POST_STATUS, POST_VIEW } from '../util/enum/enum';
+import { POST_STATUS, POST_VIEW } from '../util/enum';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { PostEntity } from './entities/post.entity';

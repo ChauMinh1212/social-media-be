@@ -1,7 +1,8 @@
-import { Body, Controller, Get, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Req, Res, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ApiBearerAuth, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Request, Response } from 'express';
-import { BaseResponse } from '../util/response/response';
+import { AspectLogger } from '../util/interceptor';
+import { BaseResponse } from '../util/response';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
@@ -12,6 +13,7 @@ import { RefreshTokenResponseSwagger } from './response/refresh-token.response';
 import { RegisterResponseSwagger } from './response/register.response';
 
 @ApiTags('Auth')
+@UseInterceptors(AspectLogger)
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) { }

@@ -1,6 +1,6 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ExceptionResponse } from '../../exceptions/common.exception';
+import { ExceptionResponse } from '../../util/exception';
 
 @Injectable()
 export class AccessTokenGuard extends AuthGuard('jwt') {

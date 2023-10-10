@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Cache } from 'cache-manager';
 import { Repository } from 'typeorm';
-import { CatchException, ExceptionResponse } from '../exceptions/common.exception';
+import { CatchException, ExceptionResponse } from '../util/exception';
 import { MailingService } from '../mailing/mailing.service';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';

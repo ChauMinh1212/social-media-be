@@ -1,6 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { BaseResponse } from "../../util/response/response"
-import { UserResponseCommon } from "../../util/response/user.response"
+import { BaseResponse, UserResponseCommon } from "../../util/response"
 import { PostEntity } from "../entities/post.entity"
 
 export class TimelineResponse {

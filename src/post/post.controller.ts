@@ -1,8 +1,9 @@
-import { Body, Controller, Get, HttpStatus, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Query, Req, Res, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Request, Response } from 'express';
 import { AccessTokenGuard } from '../auth/guard/auth.guard';
-import { BaseResponse } from '../util/response/response';
+import { AspectLogger } from '../util/interceptor';
+import { BaseResponse } from '../util/response';
 import { CreatePostDto } from './dto/create-post.dto';
 import { DeletePostDto } from './dto/delete-post.dto';
 import { TimelineQueryDto } from './dto/query-timeline.dto';
@@ -11,6 +12,7 @@ import { PostService } from './post.service';
 import { TimelineResponseSwagger } from './response/timeline.response';
 
 @UseGuards(AccessTokenGuard)
+@UseInterceptors(AspectLogger)
 @Controller('post')
 @ApiTags('Post')
 export class PostController {

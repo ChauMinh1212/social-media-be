@@ -2,12 +2,14 @@ import { Controller, HttpStatus, Post, Res, UploadedFiles, UseInterceptors } fro
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
-import { CatchException } from '../exceptions/common.exception';
-import { BaseResponse } from '../util/response/response';
+import { CatchException } from '../util/exception';
+import { AspectLogger } from '../util/interceptor';
+import { BaseResponse } from '../util/response';
 import { UploadResponseSwagger } from './response/upload.response';
 import { UploadService } from './upload.service';
 
 @ApiTags('Upload')
+@UseInterceptors(AspectLogger)
 @Controller('upload')
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}

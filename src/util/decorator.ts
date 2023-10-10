@@ -1,6 +1,6 @@
 import { HttpStatus } from "@nestjs/common";
 import { registerDecorator, ValidationArguments, ValidationOptions } from "class-validator";
-import { ExceptionResponse } from "../exceptions/common.exception";
+import { ExceptionResponse } from "./exception";
 
 export function IsEmail(validationOptions?: ValidationOptions) {
     return (object: unknown, propertyName: string) => {

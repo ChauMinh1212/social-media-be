@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { BaseResponse } from "../../util/response/response";
+import { BaseResponse } from "../../util/response";
 
 class UploadResponse {
     @ApiProperty({

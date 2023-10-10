@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CatchException } from '../exceptions/common.exception';
+import { CatchException } from '../util/exception';
 import * as moment from 'moment'
 import { MinioService } from 'nestjs-minio-client'
 
