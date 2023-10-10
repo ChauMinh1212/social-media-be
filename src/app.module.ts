@@ -9,6 +9,8 @@ import { MailingModule } from './mailing/mailing.module';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { UploadModule } from './upload/upload.module';
 import { MinioModule } from 'nestjs-minio-client';
+import { UserModule } from './user/user.module';
+import { PostModule } from './post/post.module';
 
 
 @Module({
@@ -51,6 +53,8 @@ import { MinioModule } from 'nestjs-minio-client';
     AuthModule,
     MailingModule,
     UploadModule,
+    UserModule,
+    PostModule,
   ],
 })
 export class AppModule {}

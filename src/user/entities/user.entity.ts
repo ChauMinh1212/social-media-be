@@ -13,9 +13,15 @@ export class UserEntity {
     user_name: string
 
     @Column({
+        type: 'varchar',
+        default: ''
+    })
+    description: string
+
+    @Column({
         type: 'varchar'
     })
-    avatar: string
+    email: string
 
     @Column({
         type: 'varchar'
@@ -25,10 +31,31 @@ export class UserEntity {
     @Column({
         type: 'varchar'
     })
-    email: string
+    avatar: string
 
     @Column({
-        type: 'int'
+        type: 'int',
+        array: true,
+        default: []
+    })
+    follower: number[]
+
+    @Column({
+        type: 'int',
+        array: true,
+        default: []
+    })
+    following: number[]
+
+    @Column({
+        type: 'int',
+        default: 0
+    })
+    no_of_post: number
+
+    @Column({
+        type: 'int',
+        default: 0
     })
     is_active: number
 

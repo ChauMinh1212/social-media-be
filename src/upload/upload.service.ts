@@ -19,7 +19,7 @@ export class UploadService {
           'X-Amz-Meta-Testing': 1234,
         })
 
-        url.push(`/${now}/${item.mimetype.split('/')[0]}/${item.originalname}`)
+        url.push(`/social/${now}/${item.mimetype.split('/')[0]}/${item.originalname}`)
       }
       return {url}
     } catch (e) {

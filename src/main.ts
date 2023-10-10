@@ -1,11 +1,23 @@
+import { HttpStatus, ValidationError, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { ExceptionResponse } from './exceptions/common.exception';
+import { UtilCommonTemplate } from './util/util.common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.setGlobalPrefix(process.env.PREFIX)
+  app.useGlobalPipes(new ValidationPipe({
+    transform: true,
+    exceptionFactory(errors: ValidationError[]) {
+      return new ExceptionResponse(
+        HttpStatus.BAD_REQUEST,
+        UtilCommonTemplate.getMessageValidator(errors),
+      );
+    },
+  }))
 
   const config = new DocumentBuilder()
     .setTitle('Social Media Swagger')

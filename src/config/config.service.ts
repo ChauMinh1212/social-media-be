@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import * as redisStore from 'cache-manager-redis-store';
-import { UserEntity } from '../auth/entities/user.entity';
+import { join } from 'path';
 
 @Injectable()
 export class ConfigService implements TypeOrmOptionsFactory {
@@ -13,7 +13,7 @@ export class ConfigService implements TypeOrmOptionsFactory {
       username: process.env.DB_USER_NAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      entities: [join(__dirname, '/../**/**.entity{.ts,.js}')],
       synchronize: true,
     };
   }

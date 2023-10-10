@@ -1,10 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty } from "class-validator";
 
-export class VerifyAccountDto {
+export class DeletePostDto {
     @IsNotEmpty()
     @ApiProperty({
         type: Number
     })
-    code: number
+    id: number
 }

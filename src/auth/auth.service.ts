@@ -7,7 +7,7 @@ import { CatchException, ExceptionResponse } from '../exceptions/common.exceptio
 import { MailingService } from '../mailing/mailing.service';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
-import { UserEntity } from './entities/user.entity';
+import { UserEntity } from '../user/entities/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -29,11 +29,17 @@ export class AuthService {
         is_active: 0,
         code_active: code
       })
+
+      await this.userRepo.save(new_user)
+
       const token = await this.getTokens(new_user.id, new_user.user_name)
+      
       new_user.refresh_token = token.refresh_token
+
       await this.userRepo.save(new_user)
 
       // await this.mailingService.sendMail(b.email, code)
+
       return {
         user_name: new_user.user_name,
         email: new_user.email,
@@ -56,7 +62,8 @@ export class AuthService {
       return {
         user_name: user.user_name,
         email: user.email,
-        avatar: '',
+        avatar: user.avatar,
+        is_active: user.is_active,
         access_token: token.access_token,
         refresh_token: user.refresh_token
       }

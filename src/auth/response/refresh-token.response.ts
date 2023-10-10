@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { BaseResponse } from "../../util/response";
+import { BaseResponse } from "../../util/response/response";
 
 class RefreshTokenResponse {
     @ApiProperty({

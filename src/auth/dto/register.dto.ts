@@ -1,11 +1,14 @@
 import { ApiProperty } from "@nestjs/swagger"
+import { IsEmail, IsNotEmpty } from "class-validator"
 
 export class RegisterDto {
+    @IsEmail()
     @ApiProperty({
         type: String
     })
     email: string
 
+    @IsNotEmpty()
     @ApiProperty({
         type: String
     })
@@ -16,6 +19,7 @@ export class RegisterDto {
     })
     avatar: string
 
+    @IsNotEmpty()
     @ApiProperty({
         type: String
     })
