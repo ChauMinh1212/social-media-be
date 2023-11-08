@@ -6,7 +6,7 @@ pipeline {
 
         stage('Build with sdsdsd') {
             steps {
-                echo 'Hello jenkins'
+                echo 'Hello jenkins, mình tên Minh'
             }
         }
  
