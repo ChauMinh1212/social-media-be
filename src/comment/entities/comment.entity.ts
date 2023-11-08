@@ -1,13 +1,22 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { PostEntity } from "../../post/entities/post.entity";
 import { UserEntity } from "../../user/entities/user.entity";
 import { BaseEntity } from "../../util/base.entity";
 
-@Entity('post')
-export class PostEntity extends BaseEntity {
+@Entity('comment')
+export class CommentEntity extends BaseEntity {
     @PrimaryGeneratedColumn({
         type: 'integer'
     })
     id: number
+
+    @ManyToOne(() => PostEntity, (post) => post.id)
+    @JoinColumn({name: 'post_id'})
+    post: PostEntity
+
+    @ManyToOne(() => UserEntity, (user) => user.id)
+    @JoinColumn({name: 'user_id'})
+    user: UserEntity
 
     @Column({
         type: 'varchar',
@@ -26,27 +35,11 @@ export class PostEntity extends BaseEntity {
         type: 'integer',
         default: 0
     })
-    no_of_love: number
+    no_of_like: number
 
     @Column({
         type: 'integer',
         default: 0
     })
-    no_of_comment: number
-
-    @Column({
-        type: 'integer',
-        default: 1
-    })
     status: number
-
-    @Column({
-        type: 'integer',
-        default: 1
-    })
-    view: number
-
-    @ManyToOne(() => UserEntity, (user) => user.id)
-    @JoinColumn({name: 'user_id'})
-    user: UserEntity
 }

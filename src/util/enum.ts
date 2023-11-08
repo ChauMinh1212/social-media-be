@@ -8,3 +8,8 @@ export enum POST_STATUS {
     DELETE,
     NORMAL
 }
+
+export enum COMMENT_STATUS {
+    DELETE,
+    NORMAL
+}

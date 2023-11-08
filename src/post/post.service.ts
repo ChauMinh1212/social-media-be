@@ -64,7 +64,7 @@ export class PostService {
 
   async getTimeline(user_id: number, profile_id: number) {
     try {
-      const post = await this.postRepo.find({ relations: { user: true } })
+      const post = await this.postRepo.find({ where: {status: POST_STATUS.NORMAL}, relations: { user: true } })
       const data = TimelineResponse.mapToList(post)
       return data
     } catch (e) {

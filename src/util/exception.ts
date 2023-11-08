@@ -1,4 +1,4 @@
-import {HttpException, HttpStatus, Logger} from '@nestjs/common';
+import { HttpException, HttpStatus, Logger } from '@nestjs/common';
 
 export class ExceptionResponse extends HttpException {
   constructor(status?: HttpStatus, message?: string, data?: any) {
@@ -19,13 +19,13 @@ export class CatchException extends ExceptionResponse {
     CatchException.getStackTrace(error.message);
   }
 
-  static getStackTrace(message?: string) {
+  static async getStackTrace(message?: string) {
     const obj = {} as any;
     Error.captureStackTrace(obj, this.getStackTrace);
     const logger = new Logger('ErrorService', {
       timestamp: true,
     });
-
+    
     const originFile = obj.stack.split('\n')[2].split('/');
     const fileName = originFile[originFile.length - 1].split(':')[0];
     const lineNumber = +originFile[originFile.length - 1].split(':')[1];

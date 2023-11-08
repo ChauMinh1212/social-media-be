@@ -11,6 +11,10 @@ import { UploadModule } from './upload/upload.module';
 import { MinioModule } from 'nestjs-minio-client';
 import { UserModule } from './user/user.module';
 import { PostModule } from './post/post.module';
+import { CommentModule } from './comment/comment.module';
+import { SmsModule } from './sms/sms.module';
+import { HttpConfigModule } from './http/http.module';
+import * as moment from 'moment-timezone';
 
 
 @Module({
@@ -55,6 +59,15 @@ import { PostModule } from './post/post.module';
     UploadModule,
     UserModule,
     PostModule,
+    CommentModule,
+    SmsModule,
+    HttpConfigModule,
   ],
+  providers: [
+    {
+      provide: 'moment-timezone',
+      useValue: moment.tz.setDefault('Asia/Ho_Chi_Minh'),
+    },
+  ]
 })
 export class AppModule {}

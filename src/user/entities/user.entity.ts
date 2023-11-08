@@ -1,7 +1,8 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity } from "../../util/base.entity";
 
 @Entity('user')
-export class UserEntity {
+export class UserEntity extends BaseEntity {
     @PrimaryGeneratedColumn({
         type: 'int'
     })
@@ -69,10 +70,4 @@ export class UserEntity {
         nullable: true
     })
     refresh_token: string
-
-    @CreateDateColumn()
-    created_at: string
-
-    @UpdateDateColumn()
-    updated_at: string
 }

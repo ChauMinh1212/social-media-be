@@ -1,4 +1,5 @@
 import { ValidationError } from "@nestjs/common";
+import * as moment from "moment-timezone";
 
 export class UtilCommonTemplate {
     static getMessageValidator(errors: ValidationError[]) {
@@ -10,4 +11,8 @@ export class UtilCommonTemplate {
           })
           .join(',');
       }
+
+    static getDate(value: string): Date{
+      return moment(value).utc(true).toDate()
+    }  
 }
