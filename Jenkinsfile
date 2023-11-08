@@ -4,7 +4,7 @@ pipeline {
 
     stages {
 
-        stage('Build with Maven') {
+        stage('Build with sdsdsd') {
             steps {
                 echo 'Hello jenkins'
             }
